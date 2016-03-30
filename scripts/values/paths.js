@@ -1,4 +1,4 @@
-angular.module("moviedb").constant("paths", {
+angular.module("movieRent").constant("paths", {
     login: "/",
     movies: "/movies",
     newMovie:"/movies/new",
