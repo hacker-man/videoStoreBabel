@@ -1,5 +1,5 @@
 angular.module("movieRent").constant("paths", {
-    login: "/",
+    home: "/",
     movies: "/movies",
     uploadMovie:"/movies/upload",
     moviePlay:"/movies/:id",

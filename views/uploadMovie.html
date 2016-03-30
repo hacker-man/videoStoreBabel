@@ -1,46 +1,50 @@
-<div ng-controller="FormController">
+<div ng-controller="FormController" class="col-xs-12 col-md-6 col-md-offset-3">
 
-    <form name="uploadForm" class="form-horizontal" novalidate>
-        <div class="form-group">
-            <label for="title" class="col-sm-2 control-label">Title</label>
-            <div class="col-sm-10">
-                <input type="text" ng-model="model.title" name="title" class="form-control" required>
-                <div class="alert alert-warning" ng-show="uploadForm.title.$dirty && uploadForm.title.$error.required">
-                    <strong>The title is required!</strong> You must introduce a title.
-                </div>
-            </div>
+	<form name="uploadForm" class="form-horizontal" novalidate>
+		<fieldset id="movie_data">
+		<legend>Movie Data</legend>
+			<div class="form-group">
+				<label for="title" class="col-md-2 control-label">Title</label>
+				<div class="col-md-10">
+					<input type="text" ng-model="model.title" name="title" class="form-control" required>
+					<div class="alert alert-warning" ng-show="uploadForm.title.$dirty && uploadForm.title.$error.required">
+						<strong>The title is required!</strong> You must introduce a title.
+					</div>
+				</div>
 
-        </div>
-        <div class="form-group">
-            <label for="video-url" class="col-sm-2 control-label">url video</label>
-            <div class="col-sm-10">
-                <input type="url" name="video_url" ng-model="model.video_url" class="form-control" required>
-                <div class="alert alert-warning" ng-show="uploadForm.video_url.$dirty && uploadForm.video_url.$error.required">
-                    <strong>The url is required!</strong> You must introduce an url.
-                </div>
-                <div class="alert alert-danger" ng-show="uploadForm.video_url.$dirty && uploadForm.video_url.$error.url">
-                    <strong>The url is invalid!</strong> You must introduce a valid url.
-                </div>
-                
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="poster-url" class="col-md-2 control-label">url poster</label>
-            <div class="col-sm-10">
-                <input type="url" name="poster_url" ng-class="poster_url" class="form-control" required>
-                  <div class="alert alert-warning" ng-show="uploadForm.poster_url.$dirty && uploadForm.poster_url.$error.required">
-                    <strong>The url is required!</strong> You must introduce an url.
-                </div>
-                <div class="alert alert-danger" ng-show="uploadForm.poster_url.$dirty && uploadForm.poster_url.$error.url">
-                    <strong>The url is invalid!</strong> You must introduce a valid url.
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="overview" class="col-md-2 control-label">Overview</label>
-            <div class="col-sm-10">
-                <textarea name="overview" class="form-control"></textarea>
-            </div>
-        </div>
-    </form>
+			</div>
+			<div class="form-group">
+				<label for="video-url" class="col-md-2 control-label">video</label>
+				<div class="col-md-10">
+					<input type="url" name="video_url" ng-model="model.video_url" class="form-control" required placeholder="url">
+					<div class="alert alert-warning" ng-show="uploadForm.video_url.$dirty && uploadForm.video_url.$error.required">
+						<strong>The url is required!</strong> You must introduce an url.
+					</div>
+					<div class="alert alert-danger" ng-show="uploadForm.video_url.$dirty && uploadForm.video_url.$error.url">
+						<strong>The url is invalid!</strong> You must introduce a valid url.
+					</div>
+
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="poster-url" class="col-md-2 control-label">poster</label>
+				<div class="col-md-10">
+					<input type="url" name="poster_url" ng-class="poster_url" class="form-control" required placeholder="url">
+					<div class="alert alert-warning" ng-show="uploadForm.poster_url.$dirty && uploadForm.poster_url.$error.required">
+						<strong>The url is required!</strong> You must introduce an url.
+					</div>
+					<div class="alert alert-danger" ng-show="uploadForm.poster_url.$dirty && uploadForm.poster_url.$error.url">
+						<strong>The url is invalid!</strong> You must introduce a valid url.
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="overview" class="col-md-2 control-label">Overview</label>
+				<div class="col-md-10">
+					<textarea name="overview" class="form-control"></textarea>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+
 </div>
