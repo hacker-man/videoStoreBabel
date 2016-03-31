@@ -1,5 +1,5 @@
-angular.module("movieRent").controller("LoginController",
-    ["$scope", "$window", "paths", function ($scope, $window, paths){
+angular.module("movieRent").controller("LoginController", 
+    ["$scope", "$window", "LogUser", "paths", function ($scope, $window, LogUser, paths){
 
 
         $scope.model = {
@@ -10,8 +10,8 @@ angular.module("movieRent").controller("LoginController",
         $scope.next = function(){
             console.log($scope);
             if ($scope.model.user != "" && $scope.model.pass != ""){
-                 //= "#/movies";
                  console.log("Estoy dentro", $scope.model.user, $scope.model.pass);
+                 LogUser.setLogin($scope.model.user);   
                  var url = "/#" + paths.movies;
                  $window.location.href = url; 
             }
