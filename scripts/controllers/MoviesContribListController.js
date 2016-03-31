@@ -1,12 +1,7 @@
 angular.module("movieRent")
-    .controller("MoviesContribListController",["$scope", "APIClient", "$log", "paths", "URL",function($scope, APIClient, $log, paths, URL){
+    .controller("MoviesContribListController",["$scope", "APIClient", "$log", "paths",function($scope, APIClient, $log, paths, URL){
         $scope.model = [];
-        $scope.url = URL.resolve;
         $scope.type = "contrib";
-        //scope methods:
-        /*$scope.getMovieDetailURL = function(movie){
-            return URL.resolve(paths.movieDetail,{id:movie.id});
-        }*/
 
         //Controller start:
         $scope.uiState = 'loading';
