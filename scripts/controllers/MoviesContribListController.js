@@ -1,5 +1,5 @@
 angular.module("movieRent")
-    .controller("MoviesContribListController",["$scope", "APIClient", "$log", "paths",function($scope, APIClient, $log, paths, URL){
+    .controller("MoviesContribListController",["$scope","$log","APIClient","paths","LogUser",function($scope,$log,APIClient,paths,LogUser){
         $scope.model = [];
         $scope.type = "contrib";
 
@@ -11,7 +11,7 @@ angular.module("movieRent")
                 $log.log("SUCCESS", data);
                 for (var i in data) {
                     var movie = data[i];
-                    if (movie.owner == "Lautaro") {
+                    if (movie.owner == LogUser.getLogin()){
                         $scope.model.push(movie);
                     }
                 }

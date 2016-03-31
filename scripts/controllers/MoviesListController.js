@@ -10,7 +10,6 @@ angular.module("movieRent")
             //Promesa resuelta:
             function (data) {
                 $log.log("SUCCESS", data);
-                $log.log("rent_user", data[1].owner);
                 for (var i in data) {
                     var movie = data[i];
                     if (movie.user_rent == "") {

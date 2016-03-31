@@ -3,13 +3,12 @@ angular.module("movieRent")
             //scope init
             $scope.model = {};
             //Scope methods
-            $scope.$emit("changeToForm", "Upload Movie");
             $scope.saveMovie = function () {
                 APIClient.createMovie($scope.model).then(
                     function (movie) {
                         $scope.successMessage = "Movie sved! <a href=\"#movies/" + movie.id + "\">View new movie detail</a>";
                         $scope.model = {};
-                        $scope.movieForm.$setPristine();
+                        $scope.uploadForm.$setPristine();
                         console.log("PELICULA GUARDADA", movie);
                     },
                     function (error) {

@@ -1,5 +1,5 @@
-angular.module("movieRent").service("APIClient", ["$http", "$q", "apiPaths",
-function ($http, $q, apiPaths){
+angular.module("movieRent").service("APIClient", ["$http", "$q", "$filter","apiPaths","LogUser",
+function ($http, $q,$filter,apiPaths, LogUser){
 
         this.apiRequest = function (url) {
 
@@ -32,7 +32,10 @@ function ($http, $q, apiPaths){
 
         this.createMovie = function (movie) {
             var deferred = $q.defer();
-            movie.created_date = new Date();
+			movie.owner = LogUser.getLogin();
+			movie.user_rent = "";
+            movie.created_date =  $filter('date')(new Date(),'yyyy-MM-dd');
+			movie.rent_date = "";
             //movie.owner = LogUser.getLogin();
             $http.post(apiPaths.movies, movie).then(
 
