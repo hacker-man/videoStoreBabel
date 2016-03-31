@@ -1,10 +1,9 @@
-angular.module("moviedb").directive("mediaItemList",function(){
+angular.module("movieRent").directive("mediaItemList",function(){
   return {
       restrict:"AE",
-      templateUrl:"views/mediaItemList.html",
+      templateUrl:"views/movieItemList.html",
       scope:{
           model:"=items",
-          getDetailUrl:"&"
       }
   };  
 });

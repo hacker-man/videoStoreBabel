@@ -4,3 +4,5 @@ node_modules/
 dist/
 #sparrest
 server.py
+#base datos
+db/

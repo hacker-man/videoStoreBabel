@@ -1,14 +1,11 @@
 angular.module("movieRent")
-    .controller("MoviesRentListController", ["$scope", "APIClient", "$log", "paths", "URL", function ($scope, APIClient, $log, paths, URL) {
-        //scope init:
+    .controller("MoviesContribListController",["$scope", "APIClient", "$log", "paths", "URL",function($scope, APIClient, $log, paths, URL){
         $scope.model = [];
         $scope.url = URL.resolve;
         //scope methods:
-        $scope.getMovieDetailURL = function (movie) {
-            return URL.resolve(paths.movieDetail, {
-                id: movie.id
-            });
-        }
+        /*$scope.getMovieDetailURL = function(movie){
+            return URL.resolve(paths.movieDetail,{id:movie.id});
+        }*/
 
         //Controller start:
         $scope.uiState = 'loading';
@@ -18,14 +15,15 @@ angular.module("movieRent")
                 $log.log("SUCCESS", data);
                 for (var i in data) {
                     var movie = data[i];
-                    if (movie.user_rent == "Jesus")
+                    if (movie.owner == "Lautaro") {
                         $scope.model.push(movie);
+                    }
                 }
-
                 if ($scope.model.length == 0)
                     $scope.uiState = 'blank'
                 else {
                     $scope.uiState = 'ideal'
+
                 }
             },
             //Promesa rechazada:
@@ -34,4 +32,5 @@ angular.module("movieRent")
                 $scope.uiState = 'error';
             }
         );
-    }]);
+    }
+]);
