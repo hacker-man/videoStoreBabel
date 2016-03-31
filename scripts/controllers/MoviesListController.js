@@ -3,6 +3,7 @@ angular.module("movieRent")
         //scope init:
         $scope.model = [];
         $scope.url = URL.resolve;
+        $scope.type = "allMovies";
         //scope methods:
         /*$scope.getMovieDetailURL = function(movie){
             return URL.resolve(paths.movieDetail,{id:movie.id});

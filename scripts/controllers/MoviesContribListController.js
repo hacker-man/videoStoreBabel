@@ -2,6 +2,7 @@ angular.module("movieRent")
     .controller("MoviesContribListController",["$scope", "APIClient", "$log", "paths", "URL",function($scope, APIClient, $log, paths, URL){
         $scope.model = [];
         $scope.url = URL.resolve;
+        $scope.type = "movieContrib"
         //scope methods:
         /*$scope.getMovieDetailURL = function(movie){
             return URL.resolve(paths.movieDetail,{id:movie.id});
