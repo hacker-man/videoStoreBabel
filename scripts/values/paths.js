@@ -1,7 +1,9 @@
 angular.module("movieRent").constant("paths", {
-    login: "/",
+    home: "/",
     movies: "/movies",
-    newMovie:"/movies/new",
-    moviePlay:"/movies/:id",
+    rentMovies: "/movies/rent",
+    contribMovies: "/movies/contrib",
+    uploadMovie: "/movies/upload",
+    moviePlay: "/movies/:id",
     notFound: "/not-found"
 });

@@ -1,28 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="movieRent" ng-controller="AppController">
+<html lang="es" ng-app="movieRent" ng-controller="AppController">
 
 <head>
     <meta charset="UTF-8">
-    <title> Movies Rent Babel</title>
-    <link rel="stylesheet" type="text/css" href="dist/style.css">
+    <title>{{model.title}}</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 
 <body>
-    <div ng-show="isAuth()">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="col-xs-8">
-                        <h1>MENU</h1>
-                    </div>
-                    <div class="col-xs-4">
-                        {{::model.user}}<button ng-click="logout()">Logout</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Si esta autenticado -->
+    <div ng-show="isAuth()" ng-include="'views/Menu.html'"></div>
+
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

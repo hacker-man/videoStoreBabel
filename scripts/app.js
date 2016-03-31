@@ -1,14 +1,18 @@
-// Defino el módulo "movieRent"
-angular.module("movieRent", ['ngRoute']).config(
-    ["$routeProvider", "paths", function ($routeProvider, paths){
+angular.module("movieRent", ["ngRoute", "URL"])
+    .config(["$routeProvider", "paths", function ($routeProvider, paths) {
+            $routeProvider.when(paths.home, {
+                templateUrl: "/views/login.html"
+            }).when(paths.movies, {
+                templateUrl: 'views/MoviesList.html'
+            }).when(paths.rentMovies, {
+                templateUrl: 'views/MoviesRentList.html'
+            }).when(paths.contribMovies, {
+                templateUrl: 'views/MoviesContribList.html'
+            }).when(paths.uploadMovie, {
+                templateUrl: 'views/uploadMovie.html'
+            }).otherwise({
+                templateUrl: 'views/404.html'
+            })
+  }]
 
-        // Configuración de Route Provider
-        $routeProvider.when(paths.login, {
-            templateUrl: 'views/Login.html'
-        }).when(paths.movies, {
-            templateUrl: 'views/Movies.html'
-        }).otherwise({
-            templateUrl: 'views/404.html'
-        })
-    }]
-);
+    );

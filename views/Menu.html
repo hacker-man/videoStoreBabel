@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse" ng-controller="MenuController">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#{{::paths.home}}">VideoBabel</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ng-class="getClassForItem(paths.home)">
+                <a href="#{{::paths.home}}">Home</a>
+            </li>
+            <li ng-class="getClassForItem(paths.movies)">
+                <a href="#{{::paths.movies}}">All Movies</a>
+            </li>
+            <li ng-class="getClassForItem(paths.uploadMovie)">
+                <a href="#{{::paths.uploadMovie}}">Upload Movie</a>
+            </li>
+            <li ng-class="getClassForItem(paths.movies)">
+                <a href="#{{::paths.rentMovies}}">Your Rent Movies</a>
+            </li>
+             <li ng-class="getClassForItem(paths.movies)">
+                <a href="#{{::paths.contribMovies}}">Your Contributions</a>
+            </li>
+            <li ng-click="logout()">
+                <a href="#{{::paths.contribMovies}}">Your Contributions</a>
+            </li>
+        </ul>
+    </div>
+</nav>

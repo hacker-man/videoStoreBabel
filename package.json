@@ -9,6 +9,7 @@
   "author": "Jesus y Lautaro",
   "license": "ISC",
   "dependencies": {
+    "angular-route": "^1.5.3",
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^1.0.0",
     "grunt-contrib-less": "^1.2.0",
