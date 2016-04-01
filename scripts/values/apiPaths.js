@@ -1,4 +1,4 @@
 angular.module("movieRent").value("apiPaths",{
     movies: "/api/movies/",
-    moviePlay: "/api/movies/:id"
+    movieDetail: "/api/movies/:id"
 });
