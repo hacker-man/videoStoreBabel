@@ -23,12 +23,11 @@ function ($http, $q, apiPaths, URL){
 
         };
 
-        /*this.getMovie = function (movieId) {
-            var url = URL.resolve(apiPaths.moviePlay, {
-                id: movieId
-            });
+        this.getMovie = function(movieID) {
+            var url = URL.resolve(apiPaths.movieDetail, { id: movieID });
             return this.apiRequest(url);
-        }*/
+
+        };
 
         this.createMovie = function (movie) {
             var deferred = $q.defer();

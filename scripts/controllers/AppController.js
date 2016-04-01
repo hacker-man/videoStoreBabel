@@ -1,29 +1,35 @@
 angular.module("movieRent")
-    .controller("AppController",["$scope","$location","$window","paths","LogUser",function($scope,$location,$window,paths,LogUser){
+    .controller("AppController",["$scope","$location","paths","LogUser",function($scope,$location,paths,LogUser){
     
         var controller = this;
         controller.titles = {}
         controller.titles[paths.home] = "VideoClub";
-        controller.titles[paths.movies] = "Rent a Movie";
-        controller.titles[paths.rentMovies] = "Your movies";
+        controller.titles[paths.movies] = "Movies in rent";
+        controller.titles[paths.rentMovies] = "Your movies rent";
         controller.titles[paths.uploadMovie] = "Upload a Movie";
+        controller.titles[paths.contribMovie] = "Your movies contrib";
         
         //scope init:
         $scope.model = {
             title: "",
             user: ""
         }
+
         //scope event listeners:
         $scope.$on("$locationChangeSuccess", function(evt, currentRoute) {
             $scope.model.title = controller.titles[$location.path()] || "404 Not Found";
             if (!LogUser.isLogin()) {
-                $window.location.href = "/#" + paths.home;
+                $location.url(paths.home);
             } else {
                 $scope.model.user = LogUser.getLogin();
-                if (currentRoute == "http://localhost:8000/#" + paths.home){
-                    $window.location.href = "/#" + paths.movies;
+                if ($location.path() ==  paths.home){
+                    $location.url(paths.movies);
                 }
             }
+        });
+
+        $scope.$on("viewMovie", function (event, data) {
+            $scope.model.title = data;
         });
 
         $scope.isAuth = function(){
@@ -32,7 +38,7 @@ angular.module("movieRent")
 
         $scope.logout = function(){
             LogUser.setLogin("");
-            $window.location.href = "/#" + paths.home;
+            $location.url(paths.home);
         };
     }]);
 
