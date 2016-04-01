@@ -1,8 +1,8 @@
 <div ng-controller="FormController" class="col-xs-12 col-md-6 col-md-offset-3">
 
-	<form name="uploadForm" class="form-horizontal" novalidate>
+	<form name="uploadForm" class="form-horizontal" ng-submit="saveMovie()" novalidate>
 		<fieldset id="movie_data">
-		<legend>Movie Data</legend>
+			<legend>Movie Data</legend>
 			<div class="form-group">
 				<label for="title" class="col-md-2 control-label">Title</label>
 				<div class="col-md-10">
@@ -11,7 +11,18 @@
 						<strong>The title is required!</strong> You must introduce a title.
 					</div>
 				</div>
-
+			</div>
+			<div class="form-group">
+				<label for="image-url" class="col-md-2 control-label">poster</label>
+				<div class="col-md-10">
+					<input type="url" name="image_url" ng-model="model.image_url" class="form-control" required placeholder="url">
+					<div class="alert alert-warning" ng-show="uploadForm.image_url.$dirty && uploadForm.image_url.$error.required">
+						<strong>The url is required!</strong> You must introduce an url.
+					</div>
+					<div class="alert alert-danger" ng-show="uploadForm.image_url.$dirty && uploadForm.image_url.$error.url">
+						<strong>The url is invalid!</strong> You must introduce a valid url.
+					</div>
+				</div>
 			</div>
 			<div class="form-group">
 				<label for="video-url" class="col-md-2 control-label">video</label>
@@ -23,19 +34,6 @@
 					<div class="alert alert-danger" ng-show="uploadForm.video_url.$dirty && uploadForm.video_url.$error.url">
 						<strong>The url is invalid!</strong> You must introduce a valid url.
 					</div>
-
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="poster-url" class="col-md-2 control-label">poster</label>
-				<div class="col-md-10">
-					<input type="url" name="poster_url" ng-class="poster_url" class="form-control" required placeholder="url">
-					<div class="alert alert-warning" ng-show="uploadForm.poster_url.$dirty && uploadForm.poster_url.$error.required">
-						<strong>The url is required!</strong> You must introduce an url.
-					</div>
-					<div class="alert alert-danger" ng-show="uploadForm.poster_url.$dirty && uploadForm.poster_url.$error.url">
-						<strong>The url is invalid!</strong> You must introduce a valid url.
-					</div>
 				</div>
 			</div>
 			<div class="form-group">
@@ -44,6 +42,7 @@
 					<textarea name="overview" class="form-control"></textarea>
 				</div>
 			</div>
+			<button class="btn btn-primary pull-right" type="submit" ng-disabled="uploadForm.$invalid">Create</button>
 		</fieldset>
 	</form>
 

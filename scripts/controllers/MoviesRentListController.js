@@ -1,16 +1,25 @@
 angular.module("movieRent")
-    .controller("MoviesRentListController", ["$scope", "APIClient", "$log", "paths", "URL", function ($scope, APIClient, $log, paths, URL) {
+    .controller("MoviesRentListController", ["$scope", "$log","$location","APIClient", "paths", "LogUser","URL",function ($scope, $log,$location,APIClient, paths, LogUser,URL) {
         //scope init:
         $scope.model = [];
-        $scope.url = URL.resolve;
-        //scope methods:
-        $scope.getMovieDetailURL = function (movie) {
-            return URL.resolve(paths.movieDetail, {
-                id: movie.id
-            });
-        }
+        $scope.type = "rent";
 
         //Controller start:
+        $scope.unRent = function (movie) {
+            movie.user_rent = "";
+            movie.rent_date = movie.rent_date;
+            APIClient.modifyMovie(movie).then(
+                function (movie) {
+                    console.log("PELICULA DESALQUILADA", movie);
+                    var detail= URL.resolve(apiPaths.movieDetail,{id:movie.id});
+                    $location.url(detail);
+                },
+                function (error) {
+                    console.log("ERROR AL DESALQUILAR PELICULA", error);
+                }
+            );
+        }
+
         $scope.uiState = 'loading';
         APIClient.getMovies().then(
             //Promesa resuelta:
@@ -18,7 +27,7 @@ angular.module("movieRent")
                 $log.log("SUCCESS", data);
                 for (var i in data) {
                     var movie = data[i];
-                    if (movie.user_rent == "Jesus")
+                    if (movie.user_rent == LogUser.getLogin())
                         $scope.model.push(movie);
                 }
 

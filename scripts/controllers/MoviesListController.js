@@ -1,12 +1,23 @@
 angular.module("movieRent")
-    .controller("MoviesListController", ["$scope", "APIClient", "$log", "paths", "URL", function ($scope, APIClient, $log, paths, URL) {
+    .controller("MoviesListController", ["$scope", "$log", "$window", "$location", "$filter", "APIClient", "paths", "LogUser", function ($scope, $log, $window, $location, $filter, APIClient, paths, LogUser) {
         //scope init:
         $scope.model = [];
-        $scope.url = URL.resolve;
-        //scope methods:
-        /*$scope.getMovieDetailURL = function(movie){
-            return URL.resolve(paths.movieDetail,{id:movie.id});
-        }*/
+        $scope.type = "all";
+        //controller methods:
+        $scope.uiState = 'loading';
+        $scope.rentMovie = function (movie) {
+            movie.user_rent = LogUser.getLogin();
+            movie.rent_date = $filter('date')(new Date(), 'yyyy-MM-dd');
+            APIClient.modifyMovie(movie).then(
+                function (movie) {
+                    console.log("PELICULA ALQUILADA", movie);
+                    $location.url(paths.home);
+                },
+                function (error) {
+                    console.log("ERROR AL ALQUILAR PELICULA", error);
+                }
+            );
+        }
 
         //Controller start:
         $scope.uiState = 'loading';
@@ -14,7 +25,6 @@ angular.module("movieRent")
             //Promesa resuelta:
             function (data) {
                 $log.log("SUCCESS", data);
-                $log.log("rent_user", data[1].owner);
                 for (var i in data) {
                     var movie = data[i];
                     if (movie.user_rent == "") {

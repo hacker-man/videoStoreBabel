@@ -4,6 +4,8 @@ angular.module("movieRent").directive("mediaItemList",function(){
       templateUrl:"views/movieItemList.html",
       scope:{
           model:"=items",
+          type:"=",
+          rent:"="
       }
   };  
 });

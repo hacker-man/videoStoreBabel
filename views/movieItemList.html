@@ -1,30 +1,50 @@
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Poster</th>
-            <th>Title</th>
-            <th>Last Rent</th>
-            <th>Upload by</th>
-            <th>
-               <!-- <input class="form-control" type="search" ng-model="query.title" placeholder="Search...">-->
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="item in model">
-            <td>
-                <img ng-src="{{::item.image_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}" width="90px">
-            </td>
-            <td>
-                {{::item.title}}
-            </td>
-            <td>
-                {{::item.rent_date | date:"dd/MM/yyyy"}}
-                <br> ({{::item.rent_date}})
-            </td>
-            <td>
-                {{::item.owner}}
-            </td>
-        </tr>
-    </tbody>
+	<thead>
+		<tr>
+			<th>Poster</th>
+			<th>Title</th>
+			<th>Last Rent</th>
+			<th class="visible-md visible-lg">Upload by</th>
+			<th ng-if="type == 'contrib'">Upload date</th>
+			<th>
+				<!-- <input class="form-control" type="search" ng-model="query.title" placeholder="Search...">-->
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in model">
+			<td>
+				<img ng-src="{{::item.image_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}" width="90px">
+			</td>
+			<td>
+				{{::item.title}}
+			</td>
+			<td ng-if="item.rent_date != ''">
+				{{::item.rent_date | date:"dd/MM/yyyy"}}
+			</td>
+			<td ng-if="item.rent_date == ''"> 
+			                -
+			</td>
+			<td class="visible-md visible-lg">
+				{{::item.owner}}
+			</td>
+			<td ng-if="type == 'contrib'">
+				{{::item.created_date}}
+			</td>
+			<td>
+				<button class="btn btn-primary" ng-if="type == 'all'" ng-click="rent(item)">
+					Rent
+				</button>
+			</td>
+			<td>
+				<button class="btn btn-primary" ng-if="type == 'rent'" ng-click="rent(item)">
+					watch now
+				</button>
+			</td>
+			
+
+
+		</tr>
+	</tbody>
+
 </table>
