@@ -1,5 +1,5 @@
 angular.module("movieRent")
-    .controller("MoviesRentListController", ["$scope", "$log","$location","APIClient", "paths", "LogUser","URL",function ($scope, $log,$location,APIClient, paths, LogUser,URL) {
+    .controller("MoviesRentListController", ["$scope", "$log","$location","APIClient", "paths","apiPaths","LogUser","URL",function ($scope, $log,$location,APIClient, paths,apiPaths, LogUser,URL) {
         //scope init:
         $scope.model = [];
         $scope.type = "rent";
