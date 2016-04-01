@@ -5,7 +5,7 @@ angular.module("movieRent").directive("mediaItemList",function(){
       scope:{
           model:"=items",
           type:"=",
-          rentMovie:"="
+          rent:"="
       }
   };  
 });

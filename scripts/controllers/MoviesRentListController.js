@@ -1,10 +1,25 @@
 angular.module("movieRent")
-    .controller("MoviesRentListController", ["$scope", "$log", "APIClient","paths","LogUser",function ($scope,$log,APIClient,paths,LogUser) {
+    .controller("MoviesRentListController", ["$scope", "$log","$location","APIClient", "paths", "LogUser","URL",function ($scope, $log,$location,APIClient, paths, LogUser,URL) {
         //scope init:
         $scope.model = [];
-		$scope.type = "rent";
+        $scope.type = "rent";
 
         //Controller start:
+        $scope.unRent = function (movie) {
+            movie.user_rent = "";
+            movie.rent_date = movie.rent_date;
+            APIClient.modifyMovie(movie).then(
+                function (movie) {
+                    console.log("PELICULA DESALQUILADA", movie);
+                    var detail= URL.resolve(apiPaths.movieDetail,{id:movie.id});
+                    $location.url(detail);
+                },
+                function (error) {
+                    console.log("ERROR AL DESALQUILAR PELICULA", error);
+                }
+            );
+        }
+
         $scope.uiState = 'loading';
         APIClient.getMovies().then(
             //Promesa resuelta:

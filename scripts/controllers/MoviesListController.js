@@ -1,5 +1,5 @@
 angular.module("movieRent")
-    .controller("MoviesListController", ["$scope", "$log", "$window","$location","$filter","APIClient", "paths", "LogUser", function ($scope, $log, $window,$location,$filter,APIClient, paths, LogUser) {
+    .controller("MoviesListController", ["$scope", "$log", "$window", "$location", "$filter", "APIClient", "paths", "LogUser", function ($scope, $log, $window, $location, $filter, APIClient, paths, LogUser) {
         //scope init:
         $scope.model = [];
         $scope.type = "all";
@@ -7,7 +7,7 @@ angular.module("movieRent")
         $scope.uiState = 'loading';
         $scope.rentMovie = function (movie) {
             movie.user_rent = LogUser.getLogin();
-           movie.rent_date = $filter('date')(new Date(), 'yyyy-MM-dd');
+            movie.rent_date = $filter('date')(new Date(), 'yyyy-MM-dd');
             APIClient.modifyMovie(movie).then(
                 function (movie) {
                     console.log("PELICULA ALQUILADA", movie);

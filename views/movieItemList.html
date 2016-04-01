@@ -32,12 +32,12 @@
 				{{::item.created_date}}
 			</td>
 			<td>
-				<button class="btn btn-primary" ng-if="type == 'all'" ng-click="rentMovie(item)">
+				<button class="btn btn-primary" ng-if="type == 'all'" ng-click="rent(item)">
 					Rent
 				</button>
 			</td>
 			<td>
-				<button class="btn btn-primary" ng-if="type == 'rent'">
+				<button class="btn btn-primary" ng-if="type == 'rent'" ng-click="rent(item)">
 					watch now
 				</button>
 			</td>

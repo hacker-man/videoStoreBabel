@@ -1,4 +1,4 @@
-angular.module("movieRent", ["ngRoute"])
+angular.module("movieRent", ["ngRoute","URL"])
     .config(["$routeProvider", "paths", function ($routeProvider, paths) {
             $routeProvider.when(paths.home, {
                 templateUrl: "/views/login.html"
