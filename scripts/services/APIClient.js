@@ -1,5 +1,5 @@
-angular.module("movieRent").service("APIClient", ["$http", "$q", "$filter", "apiPaths", "LogUser",
-function ($http, $q, $filter, apiPaths, LogUser) {
+angular.module("movieRent").service("APIClient", ["$http", "$q", "$filter", "apiPaths", "LogUser", "URL",
+function ($http, $q, $filter, apiPaths, LogUser, URL) {
 
         this.apiRequest = function (url) {
 

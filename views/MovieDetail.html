@@ -53,7 +53,10 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <video class="center-block" controls ng-src="{{::trustSrc(model.video_url)}}" type="video/mp4"></video>
+            <!-- TODO: Caputar evento reproducir trailer para desalquilar (Play) -->
+            <div ng-click="unRent(model)">
+                <video class="center-block" controls ng-src="{{::trustSrc(model.video_url)}}" type="video/mp4"></video>
+            </div>
         </div>
     </div>
 </div>

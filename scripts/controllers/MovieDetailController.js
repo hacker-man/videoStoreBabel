@@ -17,6 +17,18 @@ angular.module("movieRent").controller("MovieDetailController",
                 return overview;
             }
         }
+        $scope.unRent = function (movie) {
+            movie.user_rent = "";
+            // movie.rent_date = movie.rent_date;
+            APIClient.modifyMovie(movie).then(
+                function (movie) {
+                    console.log("PELICULA DESALQUILADA", movie);
+                },
+                function (error) {
+                    console.log("ERROR AL DESALQUILAR PELICULA", error);
+                }
+            );
+        }
 
         // Control init
         APIClient.getMovie($routeParams.id).then(
@@ -24,7 +36,7 @@ angular.module("movieRent").controller("MovieDetailController",
             // película encontrada
             function(movie){
                 $scope.model = movie;
-                console.log("DATO", $scope.model.user_rent);
+                console.log("DATO", movie.user_rent);
                 if (movie.user_rent == LogUser.getLogin()){
                     // TODO: Hacer una vista para pelicula alquilada
                     $scope.$emit("viewMovie", $scope.model.title);

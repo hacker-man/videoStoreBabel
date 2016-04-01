@@ -8,7 +8,6 @@ angular.module("movieRent").controller("LoginController",
         };
 
         $scope.next = function(){
-            console.log($scope);
             if ($scope.model.user != "" && $scope.model.pass != ""){
                  console.log("Estoy dentro", $scope.model.user, $scope.model.pass);
                  LogUser.setLogin($scope.model.user);   

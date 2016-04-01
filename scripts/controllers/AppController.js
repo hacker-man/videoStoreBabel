@@ -7,7 +7,7 @@ angular.module("movieRent")
         controller.titles[paths.movies] = "Movies in rent";
         controller.titles[paths.rentMovies] = "Your movies rent";
         controller.titles[paths.uploadMovie] = "Upload a Movie";
-        controller.titles[paths.contribMovie] = "Your movies contrib";
+        controller.titles[paths.contribMovies] = "Your movies contrib";
         
         //scope init:
         $scope.model = {
