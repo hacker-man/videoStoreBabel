@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="movieRent" ng-controller="AppController">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{model.title}}</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+    <div ng-show="isAuth()" ng-include="'views/Menu.html'"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
+    <script src="dist/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-inverse" ng-controller="MenuController">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#{{::paths.home}}" class="nav navbar-brand">VideoBabel</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ng-class="getClassForItem(paths.movies)">
+                <a href="#{{::paths.movies}}">All Movies</a>
+            </li>
+            <li ng-class="getClassForItem(paths.uploadMovie)">
+                <a href="#{{::paths.uploadMovie}}">Upload Movie</a>
+            </li>
+            <li ng-class="getClassForItem(paths.rentMovies)">
+                <a href="#{{::paths.rentMovies}}">Your Rent Movies</a>
+            </li>
+            <li ng-class="getClassForItem(paths.contribMovies)">
+                <a href="#{{::paths.contribMovies}}">Your Contributions</a>
+            </li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="pull-right">
+                    <div class="col-xs-8">
+                        <p class="nav navbar-brand">Usuario: {{model.user}}</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p class="nav navbar-brand" ng-click="logout()">Logout</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
