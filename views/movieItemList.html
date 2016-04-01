@@ -4,7 +4,7 @@
 			<th>Poster</th>
 			<th>Title</th>
 			<th>Last Rent</th>
-			<th>Upload by</th>
+			<th class="visible-md visible-lg">Upload by</th>
 			<th ng-if="type == 'contrib'">Upload date</th>
 			<th>
 				<!-- <input class="form-control" type="search" ng-model="query.title" placeholder="Search...">-->
@@ -25,14 +25,14 @@
 			<td ng-if="item.rent_date == ''"> 
 			                -
 			</td>
-			<td>
+			<td class="visible-md visible-lg">
 				{{::item.owner}}
 			</td>
 			<td ng-if="type == 'contrib'">
 				{{::item.created_date}}
 			</td>
 			<td>
-				<button class="btn btn-primary" ng-if="type == 'all'">
+				<button class="btn btn-primary" ng-if="type == 'all'" ng-click="rentMovie(item)">
 					Rent
 				</button>
 			</td>

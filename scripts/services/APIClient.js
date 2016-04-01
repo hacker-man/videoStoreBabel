@@ -1,5 +1,5 @@
-angular.module("movieRent").service("APIClient", ["$http", "$q", "$filter","apiPaths","LogUser",
-function ($http, $q,$filter,apiPaths, LogUser){
+angular.module("movieRent").service("APIClient", ["$http", "$q", "$filter", "apiPaths", "LogUser",
+function ($http, $q, $filter, apiPaths, LogUser) {
 
         this.apiRequest = function (url) {
 
@@ -32,15 +32,30 @@ function ($http, $q,$filter,apiPaths, LogUser){
 
         this.createMovie = function (movie) {
             var deferred = $q.defer();
-			movie.owner = LogUser.getLogin();
-			movie.user_rent = "";
-            movie.created_date =  $filter('date')(new Date(),'yyyy-MM-dd');
-			movie.rent_date = "";
+            movie.owner = LogUser.getLogin();
+            movie.user_rent = "";
+            movie.created_date = $filter('date')(new Date(), 'yyyy-MM-dd');
+            movie.rent_date = "";
             //movie.owner = LogUser.getLogin();
             $http.post(apiPaths.movies, movie).then(
 
                 function (response) {
                     deferred.resolve(response.data);
+                },
+                function (response) {
+                    deferred.reject(response.data);
+                }
+            );
+            return deferred.promise;
+        };
+    
+        this.modifyMovie = function (movie) {
+            var deferred = $q.defer();
+            var ruta = apiPaths.movies + movie.id;
+            console.log(ruta,movie);
+            $http.put(ruta,movie).then(
+                function (respose) {
+                    deferred.resolve(respose.data);
                 },
                 function (response) {
                     deferred.reject(response.data);
